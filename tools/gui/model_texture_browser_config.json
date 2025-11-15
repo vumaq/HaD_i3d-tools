@@ -1,0 +1,9 @@
+{
+    "models_dir": "C:/Program Files (x86)/Take2/Hidden and Dangerous Deluxe/data/models/models",
+    "maps_dir": "C:/Program Files (x86)/Take2/Hidden and Dangerous Deluxe/data/maps/maps",
+    "recursive": false,
+    "edit_apps": {
+        ".png": "C:/Program Files/Affinity/Photo/Photo.exe"
+    },
+    "create_backups": false
+}
