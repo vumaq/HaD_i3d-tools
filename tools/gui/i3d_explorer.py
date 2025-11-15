@@ -459,7 +459,7 @@ class ChunkDecoder:
             return "\n".join(out)
 
         # --------------------------------------------------------------
-        # 0x4200 — GIANTS I3D Map Channel (UV Set + UV Faces)
+        # 0x4200 — I3D Map Channel (UV Set + UV Faces)
         # --------------------------------------------------------------
         if cid == 0x4200:
             if len(data) < 6:
@@ -497,7 +497,7 @@ class ChunkDecoder:
             return "\n".join(out)
 
         # --------------------------------------------------------------
-        # 0x4600 — Local Axis (GIANTS I3D)
+        # 0x4600 — Local Axis (I3D)
         # --------------------------------------------------------------
         if cid == 0x4600:
             if len(data) < 12:
@@ -508,7 +508,7 @@ class ChunkDecoder:
             return f"Local Axis Vector: ({x:.4f}, {y:.4f}, {z:.4f})"
 
         # --------------------------------------------------------------
-        # 0x4610 — Axis Matrix (GIANTS I3D, 3x3)
+        # 0x4610 — Axis Matrix (I3D, 3x3)
         # --------------------------------------------------------------
         if cid == 0x4610:
             if len(data) < 36:
@@ -781,7 +781,7 @@ class ChunkDecoder:
             )
 
         # --------------------------------------------------------------
-        # 0xB00E — Bone Node (GIANTS I3D)
+        # 0xB00E — Bone Node (I3D)
         # --------------------------------------------------------------
         if cid == 0xB00E:
             out.append("Bone Node:")
@@ -806,8 +806,9 @@ class ChunkDecoder:
         # 0xB009 — Node Float (single float)
         # --------------------------------------------------------------
         if cid == 0xB009 and len(data) >= 4:
-            v = self.f32(data, 0)
-            return f"Node Float: {v}"
+            cur = self.u32(data, 0)
+            return f"Current Time (frame): {cur}"
+
 
         # ==================================================================
         # ANIMATION TRACK TAGS (0xB020 – 0xB02A)
@@ -1190,7 +1191,7 @@ class ChunkDecoder:
             return "\n".join(out)
 
         # --------------------------------------------------------------
-        # 0xB00E — Bone Node (GIANTS I3D Extension)
+        # 0xB00E — Bone Node (I3D Extension)
         # --------------------------------------------------------------
         if cid == 0xB00E:
             out.append("Bone Node:")
